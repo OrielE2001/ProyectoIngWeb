@@ -1,0 +1,568 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,700&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    font-size: 'Roboto', sans-serif;
+}
+
+#login_container{
+    margin-top: 6rem;
+}
+
+#building_container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #0A0860;
+    color: #fff;
+}
+
+.login_logo{
+    margin: 0%;
+    font-size:5rem;
+    font-weight: bold;
+    overflow: hidden;
+}
+#icons_svg{
+    margin-top: 0;
+    font-size: 18px;
+}
+
+#button_login{
+    background-color: #0A0860;
+    border-radius: 10px;
+    padding: 8px;
+}
+
+#input_text{
+    padding: 8px;
+    border-radius: 10px;
+}
+
+.olvidar{
+    padding: 2%;
+    font-size: 10px;
+}
+
+.olvidar > span > a {
+    color: #0A0860;
+}
+
+/*Estilos para la página de registro*/
+
+#register_container{
+    margin-top: 3rem;
+}
+
+/*Encabezado*/
+.nav-logo{
+    font-size: 30px;
+    font-weight: bold;
+    color: rgba(255, 255, 255, 0.816);
+}
+
+.nav-logo:hover{
+    color: rgba(255, 255, 255, 0.816);
+    text-shadow: 2px 3px 10px #0a78afb8;
+}
+
+.navbar{
+    background-color: #7694FF;
+    border: 2px solid rgba(59, 54, 54, 0.143);
+    box-shadow: 2px 1px 10px #54515126;
+}
+
+.nav-link{
+    color: black;
+}
+
+.colapsar{
+    color: #0A0860;
+}
+
+.usuario{
+    color: black;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+
+@media (min-width: 1400px){
+    .nav-link{
+        background-color: #E9EEF0;
+        border: 1px solid black;
+        box-shadow: 2px 2px 10px #07070784;
+        width: 110px;
+        height: 45px;
+        text-align: center;
+    }
+    
+    .inicio{
+        border-radius: 10px 0 0 10px;
+    }
+    
+    .servicios{
+        border-radius: 0 10px 10px 0;
+    }
+
+    .nav-link:hover{
+        background-color: #00a2ffc7;
+        transition: 0.3s;
+        color: black;
+        font-weight: bold;
+    }
+
+    .principal:hover{
+        background-color: red !important;
+        color: white;
+    }
+
+    .usuario{
+        color: black;
+        text-decoration: none;
+        font-size: 14px;
+        margin-top: -40px;
+    }
+
+    .usuario:hover{
+        color: white;
+        text-decoration: underline;
+        transition: 0.7s;
+    }
+}
+
+@media (max-width: 960px){
+    .nav-link, .usuario{
+        color: white;
+    }
+
+    .nav-link:hover{
+        color: white;
+        font-size: 18px;
+        font-weight: bold;
+        transition: 0.5s;
+    }
+
+    .usuario:hover{
+        color: white;
+        font-size: 16px;
+        font-weight: bold;
+        text-decoration: underline;
+        transition: 0.5s;
+    }
+}
+
+/*Footer*/
+.contenedor{
+    min-height: calc(100vh);
+}
+
+footer{
+    background-color: #0A0860;
+    color: white;
+    height: 132px;
+    width: 100%;
+}
+
+footer > div{
+    height: 100%;
+    width: 100%;
+}
+
+footer>div>div>ul, footer>div>div>h6{
+    font-size: 15px;
+    font-weight: bold;
+}
+
+footer>div>div>ul>li{
+    list-style: none;
+    font-size: 12px;
+    font-weight: normal;
+    margin-top: 2px;
+}
+
+footer>div>div>ul>li>a:hover{
+    color: #00A3FF;
+    text-shadow: 2px 2px 20px #fffffff3;
+    text-decoration: underline;
+    transition: 0.3s;
+}
+
+footer>div>div>ul>li>a{
+    text-decoration: none;
+    color: white;
+}
+
+.izquierda{
+    text-align: start;
+    font-weight: bold;
+}
+
+.derecha{
+    text-align: end;
+    font-weight: bold;
+}
+
+
+.copyright{
+    font-size: 14px;
+}
+
+.fredes{
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.fredes>a>img{
+    width: 32px;
+}
+
+@media (max-width: 960px){
+    footer{
+        height: 180px;
+    }
+
+    footer>div>div>ul, footer>div>div>h6{
+        font-size: 10px;
+        font-weight: bold;
+    }
+    
+    footer>div>div>ul>li{
+        list-style: none;
+        font-size: 8px;
+    }
+    
+    footer>div>div>ul>li>a{
+        text-decoration: none;
+        color: white;
+    }
+    
+    .izquierda{
+        text-align: start;
+    }
+    
+    .derecha{
+        text-align: center;
+    }
+    
+    
+    .copyright{
+        font-size: 10px;
+    }
+    
+    .fredes{
+        text-align: center;
+        margin-bottom: 6px;
+    }
+    
+    .fredes>a>img{
+        width: 15px;
+    }
+}
+
+/*Página de Bienvenida*/
+.n-sistema{
+    background-color: #CBCBCE;
+    border: 2px solid rgb(95, 95, 95);
+    border-radius: 15px;
+    padding: 15px;
+}
+
+.n-sistema > h3{
+    font-size: 18px;
+}
+
+.n-sistema > div > div{
+    background-color: rgba(86, 86, 86, 0.435);
+    border: 2px solid rgb(29, 28, 28);
+    width: 95%;
+    margin-top: 15px;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.n-sistema > div > div > h6 , .n-sistema > div > div > a{
+    font-weight: bold;
+    text-decoration: none;
+}
+.n-sistema > div > div > a {
+    color: #0A0860;
+}
+
+.n-sistema > div > div > i {
+    display: none;
+}
+.n-sistema > div > div > a:hover{
+    color: white;
+}
+
+.n-sistema > div > div > a:visited{
+    color: black;
+}
+
+/*Historial*/
+.historial div{
+    margin-top: 10px;
+    margin-left: 10px;
+}
+.historial > div > span{
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.fa-history{
+    color: green;
+}
+
+.historial > table > thead{
+    background-color: #F4F7FC;
+}
+
+.historial > table > thead > tr{
+    color: #2652CC;
+}
+
+.h-list{
+    list-style: none;
+    margin: 0;
+}
+
+.h-list > li{
+    padding: 2px;
+}
+
+.h-list > li > a{
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.h-reprogramar{
+    color: #2652CC;
+}
+
+.h-cancelar{
+    color: red;
+}
+
+.historial > h5 {
+    font-size: 10px;
+    padding: 10px;
+    font-weight: bold;
+    color: #606F89;
+}
+
+/*listado pacientes*/
+.agenda div{
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+.agenda > div > span{
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.fa-calendar-alt{
+    color: green;
+}
+
+.agenda > div > p {
+    font-size: 15px;
+    margin: 10px;
+    color: green;
+}
+
+.agenda > table > thead{
+    background-color: #F4F7FC;
+}
+
+.agenda > table > thead > tr{
+    color: #2652CC;
+}
+
+.agenda > table > tbody > tr > td > ul{
+    list-style: none;
+    margin: 0;
+}
+
+.agenda > table > tbody > tr > td > ul > li > a{
+    font-size: 20px;
+    color: #565656;
+}
+
+.agenda > table > tbody > tr > td > ul > li > a:hover{
+    font-size: 20px;
+    color: #00A3FF;
+}
+
+.agenda > h5 {
+    font-size: 10px;
+    padding: 10px;
+    font-weight: bold;
+    color: #606F89;
+}
+
+/*Crear Nueva Cita*/
+.cita-contenedor{
+    background-color: #2652CC;
+    border: 2px solid rgba(0, 0, 0, 0.183);
+    border-radius: 25px;
+    background-color: rgba(140, 140, 140, 0.694);
+}
+
+.cita-contenedor > h3{
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.formulario-cita > h4{
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.formulario-cita > div > select{
+    margin-bottom: 20px;
+    height: 35px;
+    width: 160px;
+    font-size: 12px;
+}
+
+.form-label{
+    font-size: 14px;
+    margin-right: 10px;
+    margin-bottom: 20px;
+}
+
+.form-input{
+    height: 35px;
+    margin-bottom: 20px;
+}
+
+.boton-nueva-cita{
+    background-color: #c50202;
+    color: white;
+    font-weight: bold;
+    height: 45px;
+}
+
+.boton-nueva-cita:hover{
+    color: yellow;
+    transition: 0.5s;
+    text-decoration: underline;
+}
+
+@media (max-width: 576px){
+    .form-input{
+        width: 150px;
+    }
+
+    .boton-nueva-cita{
+        height: 28px;
+        font-size: 10px;
+    }
+}
+
+/*Reprogramación de Cita*/
+.span-reprogramar div{
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+.span-reprogramar > span{
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.fa-calendar-check{
+    color: orangered;
+}
+
+.reprogramar-cita{
+    background-color: #bab7b7d4;
+    border: 2px solid rgb(78, 78, 78);
+    border-radius: 25px;
+}
+
+.reprogramar-cita > h4{
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.reprogramar-cita > div > div{
+    font-size: 14px;
+}
+
+.reprogramar-cita > p {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.reprogramar-cita > form > label{
+    font-size: 14px;
+    font-weight: bold;
+    margin: 0;
+}
+
+.reprogramar-cita > form > select{
+    margin-bottom: 10px;
+    width: 160px;
+    height: 35px;
+    font-size: 12px;
+}
+
+.reprogramar-cita > form > p{
+    font-size: 14px;
+}
+
+.reprogramar-cita > form > p > b{
+    color: red;
+}
+
+.boton-reprogramacion{
+    background-color: #c50202;
+    color: white;
+    font-weight: bold;
+    height: 45px;
+}
+
+.boton-reprogramacion:hover{
+    color: yellow;
+    transition: 0.5s;
+    text-decoration: underline;
+}
+
+@media (max-width: 576px){   
+
+    .reprogramar-cita > h4{
+        font-size: 16px;
+        font-weight: 600;
+        margin-bottom: 10px;
+    }
+    
+    .reprogramar-cita > div > div{
+        font-size: 10px;
+    }
+
+    .reprogramar-cita > p {
+        font-size: 12px;
+    }
+    
+    .reprogramar-cita > form > p{
+        font-size: 12px;
+    }
+
+    .reprogramar-cita > form > label{
+        font-size: 10px;
+        font-weight: bold;
+    }
+    
+    .boton-reprogramacion{
+        height: 28px;
+        font-size: 10px;
+    }
+    
+}
