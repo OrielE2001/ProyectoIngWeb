@@ -1,3 +1,22 @@
+<?php 
+    session_start();
+
+    require '../Db/database.php';
+
+    if (isset($_SESSION['usuario_id'])){
+        $records = $conn->prepare('SELECT id, usuario, contrasena, rol FROM usuarios WHERE id = :id');
+        $records->bindParam(':id', $_SESSION['usuario_id']);
+        $records->execute();
+        $results = $records->fetch(PDO::FETCH_ASSOC);
+
+        $user = null;
+
+        if(count($results)>0){
+            $user = $results;
+        }
+    }
+?> 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,7 +25,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/fe0dda9e61.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="../Assets/style.css">
+    <link rel="stylesheet" href="../Assets/css/style.css">
     <title>Sistema de Gestión CSS</title>
 </head>
 <body>
@@ -27,22 +46,24 @@
         <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
             <ul class="navbar-nav mx-auto mb-2 mb-lg-0 navbar-dark">
                 <li class="nav-item">
-                <a class="nav-link inicio" aria-current="page" href="#">Inicio</a>
+                <a class="nav-link inicio" aria-current="page" href="../Interfaces/bienvenida.php">Inicio</a>
+                </li>
+                <?php if($user['rol'] == 2):?>
+                <li class="nav-item">
+                <a class="nav-link" href="../Interfaces/agenda.php">Agenda</a>
+                </li>
+                <?php endif; ?>
+                <li class="nav-item">
+                <a class="nav-link principal" href="../Acciones/nueva_cita.php">Nueva Cita</a>
                 </li>
                 <li class="nav-item">
-                <a class="nav-link" href="#">Agenda</a>
-                </li>
-                <li class="nav-item">
-                <a class="nav-link principal" href="#">Nueva Cita</a>
-                </li>
-                <li class="nav-item">
-                <a class="nav-link" href="#">Historial</a>
+                <a class="nav-link" href="../Interfaces/historial.php">Historial</a>
                 </li>
                 <li class="nav-item">
                 <a class="nav-link servicios" href="#">Servicios</a>
                 </li>
             </ul>
-            <a href="#" class="usuario">Nombre Usuario <i class="fas fa-cog"></i></a>
+            <a href="../logout.php" class="usuario">Cerrar Sesión <i class="fas fa-sign-out-alt"></i></a>
         </div>
     </div>
     </nav>

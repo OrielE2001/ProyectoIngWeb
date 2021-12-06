@@ -1,5 +1,5 @@
 <?php
-    include '../Complementos/navegacion.php';
+    include '../Partials/navegacion.php';
 ?>
 
 <div class="container-fluid contenedor agenda">
@@ -46,5 +46,5 @@
 </div>
 
 <?php
-    include '../Complementos/pie.php'
+    include '../Partials/pie.php'
 ?>

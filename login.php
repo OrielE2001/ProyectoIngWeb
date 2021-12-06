@@ -1,3 +1,31 @@
+<?php 
+
+  session_start();
+
+  if (isset($_SESSION['usuario_id'])){
+    header('Location: /ProjectCSS');
+  }
+
+  require 'Db/database.php';
+
+  if (!empty($_POST['user']) && !empty($_POST['password'])){
+    $records = $conn->prepare('SELECT id, usuario, contrasena, rol FROM usuarios WHERE usuario = :user');
+    $records->bindParam(':user', $_POST['user']);
+    $records->execute();
+    $results = $records->fetch(PDO::FETCH_ASSOC);
+
+    $message = '';
+
+    if (count($results) > 0 && password_verify($_POST['password'], $results['contrasena'])){
+      $_SESSION['usuario_id'] = $results['id'];
+      $_SESSION['usuario_rol'] = $results['rol'];
+      header('Location: /ProjectCSS/Interfaces/bienvenida.php');
+    }else{
+    $message = 'Estas credenciales no coinciden';
+  }
+  }
+
+?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -5,10 +33,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/fe0dda9e61.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="../Assets/style.css">
-    <title>Login</title>
+    <link rel="stylesheet" href="Assets/css/style.css">
+    <title>Iniciar Sesión</title>
   </head>
   <body>
+
+    <?php if(!empty($message)) : ?>
+      <p><?= $message ?></p>
+    <?php endif; ?>
+
     <div class="container shadow" id="login_container">
         <div class="row">
             <div class="col-6 shadow" id="building_container">
@@ -28,12 +61,12 @@
             <div class="col-6">
                 <h2 class="fw-bold text-center pt-5 mb-5">Bienvenido Nuevamente</h2>
                 <!-- Login -->
-                <form action="#">
+                <form action="login.php" method="post">
                     <div class="mt-2 mb-4">
-                        <input type="text" class="form-control shadow-sm" name="user" placeholder="usuario"  id="input_text" require>
+                        <input type="text" class="form-control shadow-sm" name="user" placeholder="Ingrese su usuario"  id="input_text" require>
                     </div>
                     <div class="mt-5 mb-4">
-                        <input type="password" class="form-control shadow-sm" name="password" placeholder="contrasena"  id="input_text" require>
+                        <input type="password" class="form-control shadow-sm" name="password" placeholder="Ingrese su contraseña"  id="input_text" require>
                     </div>
                     <div class="d-grid" id="button_login">
                       <button type="submit" class="btn text-light fw-bold">INICIAR</button>
@@ -41,7 +74,7 @@
 
                     <div class="olvidar">
                       <span><a href="#" style="text-decoration: none;"> Olvidaste tu contrasena?</a></span>
-                      <span class="mr-0">No tienes una cuenta <a href="#">create una</a></span>
+                      <span class="mr-0">No tienes una cuenta <a href="signup.php">create una</a></span>
                     </div>
                 </form>
 
