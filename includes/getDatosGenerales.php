@@ -20,7 +20,7 @@
         $queryE = "SELECT id, nombre FROM doctor WHERE id_especialidad = '$id_especialidad' AND id_policlinica = '$id_policlinica'";
         $resultadoE = mysqli_query($connection, $queryE);
 
-        $html = "<option value=''>Seleccione Policlinica</option>";
+        $html = "<option value=''>Seleccione Doctor</option>";
 
         while ($rowD = mysqli_fetch_assoc($resultadoE)){
         $html = "<option value='".$rowD['id']."'>".$rowD['nombre']."</option>"; 
