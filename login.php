@@ -9,16 +9,17 @@
   require 'Db/database.php';
 
   if (!empty($_POST['user']) && !empty($_POST['password'])){
-    $records = $conn->prepare('SELECT id, usuario, contrasena, rol FROM usuarios WHERE usuario = :user');
-    $records->bindParam(':user', $_POST['user']);
-    $records->execute();
-    $results = $records->fetch(PDO::FETCH_ASSOC);
+    $user_conf = $_POST['user'];
+    $pass_conf = $_POST['password'];
+    $query = "SELECT id, usuario, contrasena, rol FROM usuarios WHERE usuario = '$user_conf'";
+    $results = mysqli_query($connection, $query);
+    $user_data = mysqli_fetch_assoc($results);
 
     $message = '';
 
-    if (count($results) > 0 && password_verify($_POST['password'], $results['contrasena'])){
-      $_SESSION['usuario_id'] = $results['id'];
-      $_SESSION['usuario_rol'] = $results['rol'];
+    if (count($user_data) > 0 && password_verify($pass_conf, $user_data['contrasena'])){
+      $_SESSION['usuario_id'] = $user_data['id'];
+      echo $user_data['id'];
       header('Location: /ProjectCSS/Interfaces/bienvenida.php');
     }else{
     $message = 'Estas credenciales no coinciden';

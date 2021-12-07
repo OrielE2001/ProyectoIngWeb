@@ -9,17 +9,20 @@
         <h3>Noticias del sistema</h3>
         <div class="row justify-content-center">
             <?php
-            $noticias  = $conn->prepare('SELECT id, titulo_actualizacion, detalles, fecha_actualizacion FROM noticias_sistema ORDER BY fecha_actualizacion DESC');
-            $noticias->execute();
-            while($noticia_sistema = $noticias->fetch(PDO::FETCH_ASSOC)){
-            $results ;  
+            global $connection;
+            $query  = "SELECT id, titulo_actualizacion, detalles, fecha_actualizacion FROM noticias_sistema ORDER BY fecha_actualizacion DESC";
+            $results = mysqli_query($connection, $query);
+            while($noticias = mysqli_fetch_assoc($results)){
             ?>
             <div class="col-12">
-                <h6><?= $noticia_sistema['titulo_actualizacion']?> D: <?= $noticia_sistema['fecha_actualizacion'] ?></h6>
-                <p><?= $noticia_sistema['detalles'] ?></p>
+                <h6><?= $noticias['titulo_actualizacion']?> D: <?= $noticias['fecha_actualizacion'] ?></h6>
+                <p><?= $noticias['detalles'] ?></p>
                 <a href="https://www.youtube.com/" target="_blank">Leer notas completas de la actualización</a>
             </div>
-            <?php } ?>
+            <?php 
+                } 
+                mysqli_close($connection);
+            ?>
         </div>
     </div>
 </div>

@@ -2,21 +2,21 @@
     session_start();
 
     require '../Db/database.php';
-
+    echo $_SESSION['usuario_id'];
     if (isset($_SESSION['usuario_id'])){
-        $records = $conn->prepare('SELECT id, usuario, contrasena, rol FROM usuarios WHERE id = :id');
-        $records->bindParam(':id', $_SESSION['usuario_id']);
-        $records->execute();
-        $results = $records->fetch(PDO::FETCH_ASSOC);
+        $user_id = $_SESSION['usuario_id'];
+        $query = "SELECT id, usuario, contrasena, rol FROM usuarios WHERE id = '$user_id'";
+        $results = mysqli_query($connection, $query);
+        $user_data = mysqli_fetch_assoc($results);
 
         $user = null;
 
-        if(count($results)>0){
-            $user = $results;
+        if(!empty($user_data)){
+            $user = $user_data;
         }
+
     }
 ?> 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,6 +27,7 @@
     <script src="https://kit.fontawesome.com/fe0dda9e61.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../Assets/css/style.css">
     <title>Sistema de Gestión CSS</title>
+    <script src="../Assets/js/jquery-3.6.0.min.js"></script>
 </head>
 <body>
     <div class="container-fluid" style="background-color: #0A0860;">
@@ -38,7 +39,6 @@
     <nav class="navbar navbar-expand-lg  p-3">
     <div class="container-fluid">
         <a class="navbar-brand nav-logo" href="#">LOGO</a>
-
         <button class="navbar-toggler navbar-light colapsar" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
         </button>

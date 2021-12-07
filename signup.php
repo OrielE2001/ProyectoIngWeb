@@ -1,22 +1,23 @@
 <?php 
   require 'Db/database.php';
-
+  global $connection;
   $message = '';
 
   if (!empty($_POST['user']) && !empty($_POST['email']) && !empty($_POST['pass'])){
-    $sql = "INSERT INTO usuarios(usuario, correo, contrasena) VALUES (:user, :email, :pass)";
-    $stmt = $conn->prepare($sql);
-    $stmt->bindParam(':user', $_POST['user']);
-    $stmt->bindParam(':email', $_POST['email']);
-    $pass = password_hash($_POST['pass'], PASSWORD_BCRYPT);
-    $stmt->bindParam(':pass', $pass);
-
-    if ($stmt->execute()){
+    $user = $_POST['user'];
+    $email = $_POST['email'];
+    $pass_crypt = password_hash($_POST['pass'], PASSWORD_BCRYPT);
+    $pass = $pass_crypt;
+    $query = "INSERT INTO usuarios(usuario, correo, contrasena) VALUES ('$user', '$email', '$pass')";
+    $results = mysqli_query($connection, $query);
+    if ($results){
       $message = 'El usuario ha sido creado satisfactoriamente';
     } else {
       $message = 'Ha ocurrido un error al momento de crear el usuario';
     }
   }
+
+  mysqli_close($connection);
 ?>
 
 <!doctype html>

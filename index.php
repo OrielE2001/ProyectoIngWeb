@@ -4,16 +4,17 @@
     require 'Db/database.php';
 
     if(isset($_SESSION['usuario_id'])){
-        $records = $conn->prepare('SELECT id, usuario, contrasena, rol FROM usuarios WHERE id = :id');
-        $records->bindParam(':id', $_SESSION['usuario_id']);
-        $records->execute();
-        $results = $records->fetch(PDO::FETCH_ASSOC);
+        $user_id = $_SESSION['usuario_id'];
+        $query = "SELECT id, usuario, contrasena, rol FROM usuarios WHERE id = '$user_id'";
+        $results = mysqli_query($connection, $query);
+        $recovery = mysqli_fetch_assoc($results);
 
         $user = null;
 
-        if(count($results)>0){
-            $user = $results;
+        if(count($recovery)>0){
+            $user = $recovery;
         }
+        mysqli_close($connection);
     }
 ?>
 
