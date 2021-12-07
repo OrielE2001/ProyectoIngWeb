@@ -2,7 +2,6 @@
     session_start();
 
     require '../Db/database.php';
-    echo $_SESSION['usuario_id'];
     if (isset($_SESSION['usuario_id'])){
         $user_id = $_SESSION['usuario_id'];
         $query = "SELECT id, usuario, contrasena, rol FROM usuarios WHERE id = '$user_id'";
@@ -14,7 +13,6 @@
         if(!empty($user_data)){
             $user = $user_data;
         }
-
     }
 ?> 
 <!DOCTYPE html>

@@ -29,6 +29,30 @@
             });
         })
     });
+
+    $(document).ready(function(){
+        $("#id_doctor").change(function(){
+
+            $("#id_doctor option:selected").each(function(){
+                id_doctor = $(this).val();
+                $.post("../includes/getDatosGenerales.php?prueba=3", { id_doctor: id_doctor}, function(data){
+                    $("#id_fecha").html(data);
+                });
+            });
+        })
+    });
+
+    $(document).ready(function(){
+        $("#id_fecha").change(function(){
+
+            $("#id_fecha option:selected").each(function(){
+                id_fecha = $(this).val();
+                $.post("../includes/getDatosGenerales.php?prueba=4", { id_fecha: id_fecha}, function(data){
+                    $("#id_hora").html(data);
+                });
+            });
+        })
+    });
 </script>
 
 
@@ -36,7 +60,7 @@
     <div class="container cita-contenedor w-50 p-4 mt-5">
         <h3 class="text-center">Nueva Cita</h3>
 
-        <form action="#" class="formulario-cita">
+        <form action="../includes/crearCita.php" method="post" class="formulario-cita">
 
 
             <h4>Datos Generales</h4>
@@ -61,10 +85,9 @@
             <h4>Atención disponible para</h4>
             <div class="atencion-disp">
                 <label for="" class="form-label">Fecha</label>
-                <select name="" id="#">
-                    <option selected disable value="">Seleccione</option>
-                    <option value="">Opcion 1</option>
-                </select>
+                <select name="asigna_fecha" id="id_fecha"></select>
+                <label for="" class="form-label">Hora</label>
+                <select name="asigna_fecha" id="id_hora"></select>
             </div>
 
 
@@ -78,17 +101,17 @@
                 <div class="seguro d-flex">
                     <label for="" class="form-label">¿Posee Seguro Médico?</label>
                     <div>
-                        <input class="form-check-input" type="radio" value="" name="seguro">
+                        <input class="form-check-input" type="radio" value="1" name="seguro">
                         <label for="" class="form-check-label">Si</label>
-                        <input class="form-check-input" type="radio" value="" name="seguro">
+                        <input class="form-check-input" type="radio" value="2" name="seguro">
                         <label for="" class="form-check-label">No</label>
                     </div>
                 </div>
                 <label for="" class="form-label">Correo Electrónico</label>
-                <input type="email" name="" require class="form-input">
+                <input type="email" name="correo_electronico" require class="form-input">
                 <br>
                 <label for="" class="form-label">Número Telefónico</label>
-                <input type="text" name="" require class="form-input">
+                <input type="text" name="numero_telefonico" require class="form-input">
             </div>
             <div class="d-flex justify-content-center">
                 <button type="submit" class="btn boton-nueva-cita">Enviar Solicitud</button>
